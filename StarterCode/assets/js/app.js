@@ -71,7 +71,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
       label = "Poverty:";
     }
     else {
-      label = "??# of Albums??:";
+      label = "Age";
     }
   
     var toolTip = d3.tip()
@@ -100,9 +100,10 @@ d3.csv("../data/data.csv").then(function(data, err) {
   
     // parse data
     data.forEach(function(realData) {
-        realData.hair_length = +realData.hair_length;
-        realData.num_hits = +realData.num_hits;
-        realData.num_albums = +realData.num_albums;
+        realData.poverty = +realData.poverty;
+        realData.healthcare = +realData.healthcare;
+        realData.age = +realData.age;
+        realData.smokes = +realData.smokes;
     });
   
     // xLinearScale function above csv import
@@ -129,11 +130,11 @@ d3.csv("../data/data.csv").then(function(data, err) {
   
     // append initial circles
     var circlesGroup = chartGroup.selectAll("circle")
-      .data(hairData)
+      .data(data)
       .enter()
       .append("circle")
       .attr("cx", d => xLinearScale(d[chosenXAxis]))
-      .attr("cy", d => yLinearScale(d.num_hits))
+      .attr("cy", d => yLinearScale(d.healthcare))
       .attr("r", 20)
       .attr("fill", "pink")
       .attr("opacity", ".5");
@@ -142,19 +143,19 @@ d3.csv("../data/data.csv").then(function(data, err) {
     var labelsGroup = chartGroup.append("g")
       .attr("transform", `translate(${width / 2}, ${height + 20})`);
   
-    var hairLengthLabel = labelsGroup.append("text")
+    var povertyLabel = labelsGroup.append("text")
       .attr("x", 0)
       .attr("y", 20)
-      .attr("value", "hair_length") // value to grab for event listener
+      .attr("value", "poverty") // value to grab for event listener
       .classed("active", true)
-      .text("Hair Metal Ban Hair Length (inches)");
+      .text("In Poverty (%)");
   
-    var albumsLabel = labelsGroup.append("text")
+    var ageLabel = labelsGroup.append("text")
       .attr("x", 0)
       .attr("y", 40)
-      .attr("value", "num_albums") // value to grab for event listener
+      .attr("value", "age") // value to grab for event listener
       .classed("inactive", true)
-      .text("# of Albums Released");
+      .text("Age");
   
     // append y axis
     chartGroup.append("text")
