@@ -155,7 +155,7 @@ function updateToolTip(chosenXAxis, circlesGroup, chosenYAxis) {
       .offset([50, -75])
       .html(function(d) {
         if (chosenXAxis === "income"){
-          let incomelevel = formatter.format(d[chosenXAxis]);
+          var incomelevel = formatter.format(d[chosenXAxis]);
   
           return (`${d.state}<br>${xlabel}: ${incomelevel.substring(0, incomelevel.length-3)}${xpercent}<br>${ylabel}: ${d[chosenYAxis]}${ypercent}`)
         } else {
