@@ -118,11 +118,17 @@ function renderYText(circlesGroup, newYScale, chosenYAxis) {
   return circlesGroup;
 }
 
+//format for mouse over $
+var formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
 
 // function used for updating circles group with new tooltip
 function updateToolTip(chosenXAxis, circlesGroup, chosenYAxis) {
 
-    var xlabel;
+    var xlabel = "";
+    var xpercent = "";
   
     if (chosenXAxis === "poverty") {
       xlabel = "Poverty";
@@ -132,22 +138,23 @@ function updateToolTip(chosenXAxis, circlesGroup, chosenYAxis) {
       xlabel = "Age";
     }
     else {
-      xlabel = "Income"
+      xlabel = "Income";
     }
   
-    var ylabel;
+    var ylabel = "";
+    var ypercent = "";
   
     if (chosenYAxis === "healthcare") {
       ylabel = "Healthcare";
-      ypercent = "%"
+      ypercent = "%";
     }
     else if (chosenYAxis === "smokes") {
       ylabel = "Smokes";
-      ypercent = "%"
+      ypercent = "%";
     }
     else {
-      ylabel = "Obesity"
-      ypercent = "%"
+      ylabel = "Obesity";
+      ypercent = "%";
     }
 
     var toolTip = d3.tip()
@@ -155,7 +162,7 @@ function updateToolTip(chosenXAxis, circlesGroup, chosenYAxis) {
       .offset([50, -75])
       .html(function(d) {
         if (chosenXAxis === "income"){
-          var incomelevel = formatter.format(d[chosenXAxis]);
+        var incomelevel = formatter.format(d[chosenXAxis]);
   
           return (`${d.state}<br>${xlabel}: ${incomelevel.substring(0, incomelevel.length-3)}${xpercent}<br>${ylabel}: ${d[chosenYAxis]}${ypercent}`)
         } else {
