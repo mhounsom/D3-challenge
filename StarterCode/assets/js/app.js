@@ -95,7 +95,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
   }
 
 // Retrieve data from the CSV file and execute everything below
-d3.csv("../data/data.csv").then(function(data, err) {
+d3.csv("data.csv").then(function(data, err) {
     if (err) throw err;
   
     // parse data
@@ -164,7 +164,7 @@ d3.csv("../data/data.csv").then(function(data, err) {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .classed("axis-text", true)
-      .text("Number of Billboard 500 Hits");
+      .text("Lacks Healthcare (%)");
   
     // updateToolTip function above csv import
     var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
@@ -183,7 +183,7 @@ d3.csv("../data/data.csv").then(function(data, err) {
   
           // functions here found above csv import
           // updates x scale for new data
-          xLinearScale = xScale(hairData, chosenXAxis);
+          xLinearScale = xScale(data, chosenXAxis);
   
           // updates x axis with transition
           xAxis = renderAxes(xLinearScale, xAxis);
@@ -195,19 +195,19 @@ d3.csv("../data/data.csv").then(function(data, err) {
           circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
   
           // changes classes to change bold text
-          if (chosenXAxis === "num_albums") {
-            albumsLabel
+          if (chosenXAxis === "age") {
+            ageLabel
               .classed("active", true)
               .classed("inactive", false);
-            hairLengthLabel
+            povertyLabel
               .classed("active", false)
               .classed("inactive", true);
           }
           else {
-            albumsLabel
+            ageLabel
               .classed("active", false)
               .classed("inactive", true);
-            hairLengthLabel
+            povertyLabel
               .classed("active", true)
               .classed("inactive", false);
           }
