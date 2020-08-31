@@ -246,21 +246,21 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
   
     var povertyLabel = xlabelsGroup.append("text")
       .attr("x", 0)
-      .attr("y", 40)
+      .attr("y", 20)
       .attr("value", "poverty") // value to grab for event listener
       .classed("active", true)
       .text("In Poverty (%)");
   
     var ageLabel = xlabelsGroup.append("text")
       .attr("x", 0)
-      .attr("y", 60)
+      .attr("y", 40)
       .attr("value", "age") // value to grab for event listener
       .classed("inactive", true)
       .text("Age (Median)");
 
     var incomeLabel = xlabelsGroup.append("text")
     .attr("x", 0)
-    .attr("y", 80)
+    .attr("y", 60)
     .attr("value", "income") // value to grab for event listener
     .classed("inactive", true)
     .text("Household Income (Median)");
@@ -271,7 +271,7 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     var healthcareLabel = ylabelsGroup.append("text")
       .attr("transform", "rotate(-90)")
       .attr("x", -(height / 2))
-      .attr("y", -40)
+      .attr("y", -20)
       .attr("value", "healthcare") // value to grab for event listener
       .text("Lacks Healthcare (%)")
       .classed("active", true);
@@ -279,7 +279,7 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     var smokesLabel = ylabelsGroup.append("text")
       .attr("transform", "rotate(-90)")
       .attr("x", -(height / 2))
-      .attr("y", -60)
+      .attr("y", -40)
       .attr("value", "smokes") // value to grab for event listener
       .text("Smokes (%)")
       .classed("inactive", true);
@@ -287,7 +287,7 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     var obeseLabel = ylabelsGroup.append("text")
       .attr("transform", "rotate(-90)")
       .attr("x", -(height / 2))
-      .attr("y", -80)
+      .attr("y", -60)
       .attr("value", "obesity") // value to grab for event listener
       .text("Obese (%)")
       .classed("inactive", true);
