@@ -169,6 +169,9 @@ function updateToolTip(chosenXAxis, circlesGroup, chosenYAxis) {
           return (`${d.state}<br>${xlabel}: ${d[chosenXAxis]}${xpercent}<br>${ylabel}: ${d[chosenYAxis]}${ypercent}`)
         };
       });
+
+      console.log("xlabel:",xlabel);
+      console.log("ylabel:",ylabel,);
   
     circlesGroup.call(toolTip);
   
@@ -246,21 +249,21 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
   
     var povertyLabel = xlabelsGroup.append("text")
       .attr("x", 0)
-      .attr("y", 20)
+      .attr("y", 30)
       .attr("value", "poverty") // value to grab for event listener
       .classed("active", true)
       .text("In Poverty (%)");
   
     var ageLabel = xlabelsGroup.append("text")
       .attr("x", 0)
-      .attr("y", 40)
+      .attr("y", 50)
       .attr("value", "age") // value to grab for event listener
       .classed("inactive", true)
       .text("Age (Median)");
 
     var incomeLabel = xlabelsGroup.append("text")
     .attr("x", 0)
-    .attr("y", 60)
+    .attr("y", 70)
     .attr("value", "income") // value to grab for event listener
     .classed("inactive", true)
     .text("Household Income (Median)");
@@ -271,7 +274,7 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     var healthcareLabel = ylabelsGroup.append("text")
       .attr("transform", "rotate(-90)")
       .attr("x", -(height / 2))
-      .attr("y", -20)
+      .attr("y", -30)
       .attr("value", "healthcare") // value to grab for event listener
       .text("Lacks Healthcare (%)")
       .classed("active", true);
@@ -279,7 +282,7 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     var smokesLabel = ylabelsGroup.append("text")
       .attr("transform", "rotate(-90)")
       .attr("x", -(height / 2))
-      .attr("y", -40)
+      .attr("y", -50)
       .attr("value", "smokes") // value to grab for event listener
       .text("Smokes (%)")
       .classed("inactive", true);
@@ -287,7 +290,7 @@ d3.csv("assets/data/data.csv").then(function(data, err) {
     var obeseLabel = ylabelsGroup.append("text")
       .attr("transform", "rotate(-90)")
       .attr("x", -(height / 2))
-      .attr("y", -60)
+      .attr("y", -70)
       .attr("value", "obesity") // value to grab for event listener
       .text("Obese (%)")
       .classed("inactive", true);
