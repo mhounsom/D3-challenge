@@ -11,7 +11,7 @@ For this assignment we are challenged to utilize D3 to create a scatter plot tha
 * CSS
 * D3
 
-##
+## Usage
 
 * Index, CSS, & App files code can be viewed and edited through Visual Studio Code.
 * Final project can be viewed here: https://mhounsom.github.io/D3-challenge/
